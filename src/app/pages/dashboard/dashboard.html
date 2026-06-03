@@ -1,0 +1,99 @@
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">🔥 CylinderBook</div>
+      <nav class="sidebar-nav">
+        <a (click)="activeTab='book'" [class.active]="activeTab==='book'">📦 Book Cylinder</a>
+        <a (click)="activeTab='orders'" [class.active]="activeTab==='orders'">📋 My Orders</a>
+        <a (click)="activeTab='profile'" [class.active]="activeTab==='profile'">🏢 Profile</a>
+      </nav>
+      <button class="btn-logout" (click)="logout()">🚪 Logout</button>
+    </aside>
+  
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+  
+      <!-- BOOK CYLINDER TAB -->
+      <div *ngIf="activeTab === 'book'">
+        <h2>Book a Cylinder</h2>
+        <p class="subtitle">Select cylinder type, quantity and preferred delivery date</p>
+  
+        <div class="cylinder-grid">
+          <div class="cylinder-card" *ngFor="let c of cylinders"
+            [class.selected]="selectedCylinder?.id === c.id"
+            (click)="selectCylinder(c)">
+            <div class="cylinder-icon">{{ c.icon }}</div>
+            <h3>{{ c.name }}</h3>
+            <p>{{ c.description }}</p>
+            <div class="price">₹{{ c.price }} / cylinder</div>
+          </div>
+        </div>
+  
+        <div class="booking-form" *ngIf="selectedCylinder">
+          <h3>Booking Details — {{ selectedCylinder.name }}</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Quantity</label>
+              <input type="number" [(ngModel)]="booking.quantity" min="1" max="50" />
+            </div>
+            <div class="form-group">
+              <label>Delivery Date</label>
+              <input type="date" [(ngModel)]="booking.date" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Delivery Address</label>
+            <input type="text" [(ngModel)]="booking.address" placeholder="Full delivery address" />
+          </div>
+          <div class="order-summary">
+            <span>Total Estimate</span>
+            <strong>₹{{ selectedCylinder.price * booking.quantity }}</strong>
+          </div>
+          <button class="btn-book" (click)="placeOrder()">Confirm & Pay ₹{{ selectedCylinder.price * booking.quantity }}</button>
+        </div>
+      </div>
+  
+      <!-- MY ORDERS TAB -->
+      <div *ngIf="activeTab === 'orders'">
+        <h2>My Orders</h2>
+        <p class="subtitle">Track all your cylinder bookings</p>
+  
+        <div class="orders-list">
+          <div class="order-card" *ngFor="let order of orders">
+            <div class="order-info">
+              <div class="order-icon">{{ order.icon }}</div>
+              <div>
+                <h4>{{ order.cylinderName }}</h4>
+                <p>Qty: {{ order.quantity }} | Date: {{ order.date }}</p>
+                <p class="address">📍 {{ order.address }}</p>
+              </div>
+            </div>
+            <div class="order-right">
+              <span class="status" [ngClass]="order.status">{{ order.status }}</span>
+              <div class="order-amount">₹{{ order.amount }}</div>
+            </div>
+          </div>
+  
+          <div class="empty-state" *ngIf="orders.length === 0">
+            <p>📭 No orders yet. Book your first cylinder!</p>
+            <button (click)="activeTab='book'" class="btn-book">Book Now</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- PROFILE TAB -->
+      <div *ngIf="activeTab === 'profile'">
+        <h2>Organisation Profile</h2>
+        <p class="subtitle">Your account details</p>
+        <div class="profile-card">
+          <div class="profile-row"><label>Organisation</label><span>ABC Hotels Pvt Ltd</span></div>
+          <div class="profile-row"><label>Contact Person</label><span>Amrit Singh</span></div>
+          <div class="profile-row"><label>Email</label><span>amrit@abchotels.com</span></div>
+          <div class="profile-row"><label>Phone</label><span>+91 98765 43210</span></div>
+          <div class="profile-row"><label>Account Status</label><span class="badge-active">✅ Active</span></div>
+        </div>
+      </div>
+  
+    </main>
+  </div>

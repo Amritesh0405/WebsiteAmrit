@@ -1,0 +1,162 @@
+.home { font-family: 'Segoe UI', sans-serif; }
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  min-height: 80vh;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+  color: #f5a623;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary {
+  padding: 14px 32px;
+  background: #f5a623;
+  color: #1a1a2e;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: #e09000; }
+
+.btn-secondary {
+  padding: 14px 32px;
+  border: 2px solid #f5a623;
+  color: #f5a623;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #f5a623;
+  color: #1a1a2e;
+}
+
+.hero-image {
+  font-size: 12rem;
+  opacity: 0.15;
+}
+
+/* CYLINDERS */
+.cylinders {
+  padding: 80px 40px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.cylinders h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #1a1a2e;
+}
+
+.cylinder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cylinder-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.cylinder-card:hover { transform: translateY(-4px); }
+
+.cylinder-card .icon { font-size: 2.5rem; margin-bottom: 16px; }
+
+.cylinder-card h3 {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.cylinder-card p { color: #777; font-size: 0.9rem; }
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #f5a623;
+  color: white;
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* HOW IT WORKS */
+.how-it-works {
+  padding: 80px 40px;
+  text-align: center;
+  background: white;
+}
+
+.how-it-works h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #1a1a2e;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.step { flex: 1; padding: 20px; }
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: #f5a623;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 auto 16px;
+}
+
+.step h3 { color: #1a1a2e; margin-bottom: 10px; }
+.step p { color: #777; font-size: 0.9rem; }
