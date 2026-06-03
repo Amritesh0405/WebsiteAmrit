@@ -250,6 +250,42 @@
     border-bottom: 1px solid #f0f0f0;
     font-size: 0.95rem;
   }
+  .toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: #28a745;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+  }
+  .payment-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .payment-badge.paid {
+    background: #d4edda;
+    color: #155724;
+  }
+  
+  .payment-badge.unpaid {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   
   .profile-row label { color: #777; font-weight: 500; }
   .profile-row span { color: #1a1a2e; font-weight: 600; }

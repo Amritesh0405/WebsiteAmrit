@@ -14,6 +14,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/bookings', require('./routes/bookings'));
+app.use('/api/payments', require('./routes/payments'));
 
 app.get('/', (req, res) => {
   res.json({ message: '🔥 CylinderBook API is running!' });

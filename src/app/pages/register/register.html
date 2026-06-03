@@ -38,7 +38,9 @@
   
         <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
   
-        <button type="submit" class="btn-submit">Create Account</button>
+        <button type="submit" class="btn-submit" [disabled]="loading">
+          {{ loading ? 'Creating account...' : 'Create Account' }}
+        </button>
       </form>
   
       <p class="login-link">Already have an account? <a routerLink="/login">Login here</a></p>

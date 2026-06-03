@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-register',
@@ -20,8 +21,9 @@ export class Register {
   };
 
   errorMsg = '';
+  loading = false;
 
-  constructor(private router: Router) {}
+  constructor(private authService: Auth, private router: Router) {}
 
   onSubmit() {
     if (this.form.password !== this.form.confirmPassword) {
@@ -32,8 +34,21 @@ export class Register {
       this.errorMsg = 'Password must be at least 8 characters!';
       return;
     }
-    // TODO: call backend API
-    console.log('Register form submitted', this.form);
-    this.router.navigate(['/dashboard']);
+
+    this.loading = true;
+    this.errorMsg = '';
+
+    const { confirmPassword, ...registerData } = this.form;
+
+    this.authService.register(registerData).subscribe({
+      next: (res) => {
+        this.authService.saveToken(res.token, res.user);
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        this.errorMsg = err.error?.message || 'Registration failed!';
+        this.loading = false;
+      }
+    });
   }
 }

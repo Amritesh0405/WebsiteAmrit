@@ -2,7 +2,6 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-      <div class="sidebar-brand">🔥 CylinderBook</div>
       <nav class="sidebar-nav">
         <a (click)="activeTab='book'" [class.active]="activeTab==='book'">📦 Book Cylinder</a>
         <a (click)="activeTab='orders'" [class.active]="activeTab==='orders'">📋 My Orders</a>
@@ -13,7 +12,9 @@
   
     <!-- MAIN CONTENT -->
     <main class="main-content">
-  
+      <div class="toast" *ngIf="showToast">
+        {{ toastMessage }}
+      </div>
       <!-- BOOK CYLINDER TAB -->
       <div *ngIf="activeTab === 'book'">
         <h2>Book a Cylinder</h2>
@@ -71,6 +72,9 @@
             </div>
             <div class="order-right">
               <span class="status" [ngClass]="order.status">{{ order.status }}</span>
+              <span class="payment-badge" [ngClass]="order.paymentStatus">
+                {{ order.paymentStatus === 'paid' ? '💳 Paid' : '⏳ Unpaid' }}
+              </span>
               <div class="order-amount">₹{{ order.amount }}</div>
             </div>
           </div>
