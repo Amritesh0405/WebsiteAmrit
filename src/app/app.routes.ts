@@ -3,11 +3,13 @@ import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { Dashboard } from './pages/dashboard/dashboard';
+import { Agencies } from './pages/agencies/agencies';
 
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'login', component: Login },
   { path: 'register', component: Register },
-  { path: 'dashboard', component: Dashboard },
+  { path: 'dashboard', component: Dashboard }, 
+  { path: 'agencies', component: Agencies },
   { path: '**', redirectTo: '' }
 ];

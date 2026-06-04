@@ -1,0 +1,17 @@
+<div class="agencies-page">
+
+    <!-- OFFICIAL PLATFORMS -->
+    <div class="official-platforms">
+      <h2>📋 Official Booking Platforms</h2>
+      <p>Book directly from government-approved platforms</p>
+      <div class="platforms-grid">
+        <a *ngFor="let p of platforms" [href]="p.url" target="_blank" class="platform-card">
+          <div class="platform-icon">{{ p.icon }}</div>
+          <h4>{{ p.name }}</h4>
+          <p>{{ p.description }}</p>
+          <span class="platform-link">Visit Official Site ↗</span>
+        </a>
+      </div>
+    </div>
+  
+  </div>
