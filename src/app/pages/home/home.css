@@ -5,54 +5,52 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 80px 40px;
+  padding: 60px 40px;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   color: white;
   min-height: 80vh;
+  gap: 20px;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
 }
 
-.hero-content h1 span {
-  color: #f5a623;
-}
+.hero-content h1 span { color: #f5a623; }
 
 .hero-content p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #aaa;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   line-height: 1.7;
 }
 
 .hero-buttons {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
-  padding: 14px 32px;
+  padding: 12px 28px;
   background: #f5a623;
   color: #1a1a2e;
   border-radius: 8px;
-  text-decoration: none;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: background 0.2s;
 }
 
 .btn-primary:hover { background: #e09000; }
 
 .btn-secondary {
-  padding: 14px 32px;
+  padding: 12px 28px;
   border: 2px solid #f5a623;
   color: #f5a623;
   border-radius: 8px;
-  text-decoration: none;
   font-weight: 600;
   transition: all 0.2s;
 }
@@ -63,27 +61,27 @@
 }
 
 .hero-image {
-  font-size: 12rem;
+  font-size: 10rem;
   opacity: 0.15;
 }
 
 /* CYLINDERS */
 .cylinders {
-  padding: 80px 40px;
+  padding: 60px 40px;
   background: #f9f9f9;
   text-align: center;
 }
 
 .cylinders h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
+  font-size: 1.8rem;
+  margin-bottom: 32px;
   color: #1a1a2e;
 }
 
 .cylinder-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 20px;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -91,23 +89,16 @@
 .cylinder-card {
   background: white;
   border-radius: 12px;
-  padding: 32px 24px;
+  padding: 28px 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   position: relative;
   transition: transform 0.2s;
 }
 
 .cylinder-card:hover { transform: translateY(-4px); }
-
 .cylinder-card .icon { font-size: 2.5rem; margin-bottom: 16px; }
-
-.cylinder-card h3 {
-  font-size: 1.1rem;
-  color: #1a1a2e;
-  margin-bottom: 10px;
-}
-
-.cylinder-card p { color: #777; font-size: 0.9rem; }
+.cylinder-card h3 { font-size: 1rem; color: #1a1a2e; margin-bottom: 10px; }
+.cylinder-card p { color: #777; font-size: 0.85rem; }
 
 .badge {
   position: absolute;
@@ -123,40 +114,64 @@
 
 /* HOW IT WORKS */
 .how-it-works {
-  padding: 80px 40px;
+  padding: 60px 40px;
   text-align: center;
   background: white;
 }
 
 .how-it-works h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
+  font-size: 1.8rem;
+  margin-bottom: 32px;
   color: #1a1a2e;
 }
 
 .steps {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 32px;
   max-width: 900px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
-.step { flex: 1; padding: 20px; }
+.step { flex: 1; min-width: 200px; padding: 20px; }
 
 .step-number {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   background: #f5a623;
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin: 0 auto 16px;
 }
 
 .step h3 { color: #1a1a2e; margin-bottom: 10px; }
-.step p { color: #777; font-size: 0.9rem; }
+.step p { color: #777; font-size: 0.85rem; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 40px 20px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .hero-content h1 { font-size: 2rem; }
+  .hero-image { display: none; }
+  .hero-buttons { justify-content: center; }
+
+  .cylinders { padding: 40px 20px; }
+  .cylinder-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .how-it-works { padding: 40px 20px; }
+  .steps { flex-direction: column; align-items: center; }
+}
