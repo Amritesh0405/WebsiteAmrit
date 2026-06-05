@@ -91,11 +91,26 @@
         <h2>Organisation Profile</h2>
         <p class="subtitle">Your account details</p>
         <div class="profile-card">
-          <div class="profile-row"><label>Organisation</label><span>ABC Hotels Pvt Ltd</span></div>
-          <div class="profile-row"><label>Contact Person</label><span>Amrit Singh</span></div>
-          <div class="profile-row"><label>Email</label><span>amrit@abchotels.com</span></div>
-          <div class="profile-row"><label>Phone</label><span>+91 98765 43210</span></div>
-          <div class="profile-row"><label>Account Status</label><span class="badge-active">✅ Active</span></div>
+          <div class="profile-row">
+            <label>Organisation</label>
+            <span>{{ user?.organisation || user?.companyName || 'N/A' }}</span>
+          </div>
+          <div class="profile-row">
+            <label>Contact Person</label>
+            <span>{{ user?.name || 'N/A' }}</span>
+          </div>
+          <div class="profile-row">
+            <label>Email</label>
+            <span>{{ user?.email || 'N/A' }}</span>
+          </div>
+          <div class="profile-row">
+            <label>Phone</label>
+            <span>{{ user?.phone || user?.phoneNumber || 'N/A' }}</span>
+          </div>
+          <div class="profile-row">
+            <label>Account Status</label>
+            <span class="badge-active">✅ {{ user?.status || 'Active' }}</span>
+          </div>
         </div>
       </div>
   
