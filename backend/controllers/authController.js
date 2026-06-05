@@ -42,7 +42,9 @@ exports.register = async (req, res) => {
         name: user.name,
         orgName: user.orgName,
         email: user.email,
-        role: user.role
+        phone: user.phone,
+        role: user.role,
+        status: user.isActive ? 'Active' : 'Inactive'
       }
     });
 
@@ -83,7 +85,39 @@ exports.login = async (req, res) => {
         name: user.name,
         orgName: user.orgName,
         email: user.email,
-        role: user.role
+        phone: user.phone,
+        role: user.role,
+        status: user.isActive ? 'Active' : 'Inactive'
+      }
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+// GET USER PROFILE
+exports.getProfile = async (req, res) => {
+  try {
+    const userId = req.user.userId;
+
+    const user = await User.findById(userId).select('-password');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found!' });
+    }
+
+    res.json({
+      message: '✅ Profile fetched successfully!',
+      user: {
+        id: user._id,
+        name: user.name,
+        organisation: user.orgName,
+        companyName: user.orgName,
+        email: user.email,
+        phone: user.phone,
+        phoneNumber: user.phone,
+        role: user.role,
+        status: user.isActive ? 'Active' : 'Inactive'
       }
     });
 
