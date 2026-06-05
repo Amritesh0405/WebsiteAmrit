@@ -20,6 +20,10 @@ export class Auth {
     return this.http.post(`${this.apiUrl}/login`, data);
   }
 
+  getProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/profile`);
+  }
+
   saveToken(token: string, user: any) {
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
