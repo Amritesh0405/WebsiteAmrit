@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,13 +14,14 @@ declare var Razorpay: any;
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
-export class Dashboard {
+export class Dashboard implements OnInit {
   activeTab = 'book';
   user: any;
   orders: any[] = [];
   loading = false;
   showToast = false;
   toastMessage = '';
+  profileLoading = false;
 
   cylinders = [
     { id: 1, icon: '🟠', name: 'LPG Cylinder', type: 'lpg', description: 'Commercial LPG for restaurants & hotels', price: 950 },
@@ -43,7 +44,27 @@ export class Dashboard {
     private paymentService: PaymentService
   ) {
     this.user = this.authService.getUser();
+  }
+
+  ngOnInit() {
+    // Fetch complete user profile from backend
+    this.loadUserProfile();
     this.loadOrders();
+  }
+
+  loadUserProfile() {
+    this.profileLoading = true;
+    this.authService.getProfile().subscribe({
+      next: (res) => {
+        this.user = res.user;
+        this.authService.saveToken(this.authService.getToken()!, this.user);
+        this.profileLoading = false;
+      },
+      error: (err) => {
+        console.error('Failed to fetch profile:', err);
+        this.profileLoading = false;
+      }
+    });
   }
 
   selectCylinder(cylinder: any) {
